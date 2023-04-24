@@ -1,4 +1,4 @@
-import pyodbc
+import pymssql
 import pytest
 
 
@@ -8,9 +8,7 @@ def db_conn():
     database = 'AdventureWorks2012'
     username = 'TestUser'
     password = 'dqe9_4!t1'
-    conn_str = f"DRIVER={{ODBC Driver 17 for SQL Server}};SERVER={server};" \
-               f"DATABASE={database};UID={username};PWD={password}"
-    conn = pyodbc.connect(conn_str)
+    conn = pymssql.connect(server=server, user=username, password=password, database=database)
     yield conn
     conn.close()
 
