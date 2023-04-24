@@ -4,8 +4,7 @@ pipeline {
    stages {
 
       stage('build') {
-        steps{      
-          sh 'pip install xmlrunner && python3 tests.py'
+        steps{
 		  sh 'pip install pytest'
           sh 'pip install pyodbc'
 		  sh 'pip install pymssql'
