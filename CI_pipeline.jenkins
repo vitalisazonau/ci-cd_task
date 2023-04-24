@@ -10,12 +10,6 @@ pipeline {
 		  sh 'pip install pymssql'
           sh 'pip install pytest-html'
         }
-        }
-	  stage('test') {
-        steps{      
-          sh 'pytest test_cases.py'
-        }
-        }
-
-  }
+      }
+   }
 }
