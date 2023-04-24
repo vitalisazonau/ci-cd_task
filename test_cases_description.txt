@@ -1,0 +1,53 @@
+--GRANT SELECT ON SCHEMA :: Person TO TestUser ;
+--GRANT SELECT ON SCHEMA :: Production TO TestUser ; 
+
+
+-- Test case #1
+-- Name: [Person].[Address] table has sum of StateProvinceID column values as expected
+-- Steps: 1. Execute query statement to get column values sum
+--           SELECT SUM(StateProvinceID) FROM [Person].[Address];
+-- Expected result: 1. Query returns value 966669
+
+
+-- Test case #2
+-- Name: [Person].[Address] table has not NULL values in AddressLine1 column
+-- Steps: 1. Execute query statement:
+--			SELECT AddressID 
+--			FROM [Person].[Address]
+--			WHERE AddressLine1 IS NULL;
+-- Expected result: 1. Empty set returns
+
+
+-- Test case #3
+-- Name: [Production].[Document] table has DocumentLevel column values in range of list [0, 1, 2]
+-- Steps:
+--			SELECT DocumentNode, DocumentLevel
+--			FROM [Production].[Document]
+--			WHERE DocumentLevel NOT IN (0, 1, 2);
+-- Expected result: 1. Empty set returns
+
+
+-- Test case #4
+-- Name: [Production].[Document] table has MAX value of Owner column values as expected 
+-- Steps: 1. Execute query statement:
+--			SELECT MAX(Owner)
+--			FROM [Production].[Document];
+-- Expected result: 1. Query returns value 220
+
+
+-- Test case #5
+-- Name: Count of rows of [Production].[UnitMeasure] table is as expected
+-- Steps: 1. Execute query statement:
+-- SELECT COUNT(*) FROM [Production].[UnitMeasure];
+-- Expected result: 1. Query returns value 38
+
+
+-- Test case #6
+-- Name: UnitMeasureCode column of [Production].[UnitMeasure] table contains unique values 
+-- Steps: 1. Execute query statement:
+--		SELECT UnitMeasureCode, COUNT(*)
+--		FROM [Production].[UnitMeasure]
+--		GROUP BY UnitMeasureCode
+--		HAVING COUNT(*) > 1;
+-- Expected result: 1. Empty set returns
+

@@ -1,0 +1,22 @@
+pipeline {
+   agent any
+
+   stages {
+
+      stage('build') {
+        steps{      
+          sh 'pip install xmlrunner && python3 tests.py'
+		  sh 'pip install pytest'
+          sh 'pip install pyodbc'
+		  sh 'pip install pymssql'
+          sh 'pip install pytest-html'
+        }
+        }
+	  stage('test') {
+        steps{      
+          sh 'python3 test_cases.py'
+        }
+        }
+
+  }
+}

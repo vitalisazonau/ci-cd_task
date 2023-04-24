@@ -1,0 +1,13 @@
+pipeline {
+   agent any
+
+   stages {
+
+      stage('runpy') {
+        steps{      
+          sh 'pip install xmlrunner && python3 tests.py'
+        }
+        }
+
+  }
+}
