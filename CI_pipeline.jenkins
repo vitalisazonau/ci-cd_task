@@ -11,5 +11,10 @@ pipeline {
           sh 'pip install pytest-html'
         }
       }
+      stage('test') {
+        steps{
+		  sh 'python3 test_cases.py'
+        }
+      }
    }
 }
