@@ -23,6 +23,11 @@ pipeline {
 		}
 
 	  }
+	  stage('Checkout') {
+            steps {
+                git branch: 'develop', url: 'https://github.com/anastaviki/ci-cd.git'
+
+            }
       stage('Copy release to main') {
 		steps {
 		  sh "git switch main"
