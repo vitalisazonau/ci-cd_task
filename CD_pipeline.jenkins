@@ -2,7 +2,7 @@ pipeline {
    agent any
    tools {
         git 'my-git'
-    }
+   }
 
    stages {
 
@@ -20,13 +20,12 @@ pipeline {
         }
       }
       stage('Commit and Push Changes') {
-			steps {
-				script {
-					sh 'git add .'
-					sh 'git commit -m "Commit message"'
-					sh 'git push origin release'
+		steps {
+		  sh 'git add .'
+		  sh 'git commit -m "Commit message"'
+		  sh 'git push origin release'
 				}
-			}
+
 	  }
       stage('Copy release to main') {
 		steps {
