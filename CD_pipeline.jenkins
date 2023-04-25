@@ -16,5 +16,11 @@ pipeline {
 		  sh 'python3 test_cases.py'
         }
       }
-   }
+      stage('Copy release to main') {
+		steps {
+		  sh "git switch main"
+		  sh "git merge origin/release"
+		  sh "git push origin main"
+        }
+      }
 }
