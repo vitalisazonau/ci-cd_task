@@ -23,10 +23,6 @@ pipeline {
 		}
 
 	  }
-	  stage('Checkout') {
-            steps {
-                git branch: 'develop', url: 'https://github.com/vitalisazonau/ci-cd_task'
-            }
       stage('Copy release to main') {
 		steps {
 		  sh "git switch main"
