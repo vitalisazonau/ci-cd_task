@@ -16,5 +16,19 @@ pipeline {
 		  sh 'python3 test_cases.py'
         }
       }
+      stage('Git config') {
+		steps {
+		  sh 'git config --global user.email "vitali_sazonau@epam.com"'
+		  sh 'git config --global user.name "Vitali_Sazonau"'
+		}
+	  }
+
+      stage('Copy release to main') {
+		steps {
+		  sh "git switch main"
+		  sh "git merge origin/release"
+		  sh "git push origin main"
+        }
+      }
    }
 }
