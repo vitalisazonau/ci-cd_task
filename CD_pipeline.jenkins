@@ -21,12 +21,8 @@ pipeline {
 		  sh 'git config --global user.email "vitali_sazonau@epam.com"'
 		  sh 'git config --global user.name "Vitali_Sazonau"'
 		}
-
 	  }
-	  stage('Checkout') {
-            steps {
-            sh "git branch: 'develop', url: 'https://github.com/vitalisazonau/ci-cd_task'"
-            }
+
       stage('Copy release to main') {
 		steps {
 		  sh "git switch main"
