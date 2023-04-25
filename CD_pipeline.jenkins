@@ -1,5 +1,8 @@
 pipeline {
    agent any
+   tools {
+        git 'my-git'
+    }
 
    stages {
 
@@ -16,6 +19,15 @@ pipeline {
 		  sh 'python3 test_cases.py'
         }
       }
+      stage('Commit and Push Changes') {
+			steps {
+				script {
+					sh 'git add .'
+					sh 'git commit -m "Commit message"'
+					sh 'git push origin release'
+				}
+			}
+	  }
       stage('Copy release to main') {
 		steps {
 		  sh "git switch main"
